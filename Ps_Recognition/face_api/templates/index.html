@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+    <h3>选择要识别的被识别人的照片，照片不能重复，每张图中只能有被识别人一人，尽量确保每张图中人物脸部无遮挡，正面对准，分别点击游览按钮选择要识别的图片,请确保照片无明显遮挡</h3>
+    {% for img in imgs %}
+        <p>{{ img }}</p>
+        <input type="file" name="{{ img }}" accept="image/gif, image/jpeg, image/png">
+    {% endfor %}
+<button type="submit">上传并识别</button>
+    <p>{{ text }}</p>
+</form>
+</body>
+</html>
